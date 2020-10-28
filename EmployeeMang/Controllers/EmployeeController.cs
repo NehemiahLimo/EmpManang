@@ -16,7 +16,7 @@ namespace EmployeeMang.Controllers
     {
         public HttpResponseMessage Get()
         {
-            string query = @"SELECT EmployeeId, EmployeeName, Department, Convert(varchar(10), DateOfJoining, 120) as DateOfJoining, PhotoFileName FROM EMPLOYEE";
+            string query = @"SELECT EmployeeId, EmployeeName, Department, Convert(varchar(10), DateOfJoining, 120) as DateOfJoining, PhotoFileName FROM dbo.Employee";
             DataTable dt = new DataTable();
             using (var sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeAppDB"].ConnectionString))
             using (var cmd = new SqlCommand(query, sqlCon))
@@ -58,7 +58,7 @@ namespace EmployeeMang.Controllers
         {
             try
             {
-                string query = @"update EMPLOYEE set EmployeeName = '" + emp.EmployeeName + @"','"+emp.Department+@"','"+emp.DateOfJoining+@"','" +emp.PhotoFileName+@"' WHERE EmployeeId = " + emp.EmployeeId + @" ";
+                string query = @"update EMPLOYEE set EmployeeName = '" + emp.EmployeeName + @"',Department='" + emp.Department+ @"',DateOfJoining='" + emp.DateOfJoining+ @"',PhotoFileName='" + emp.PhotoFileName+@"' WHERE EmployeeId = " + emp.EmployeeId + @" ";
 
                 DataTable dt = new DataTable();
                 using (var sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeAppDB"].ConnectionString))

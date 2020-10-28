@@ -15,7 +15,7 @@ namespace EmployeeMang.Controllers
     {
         public HttpResponseMessage Get()
         {
-            string query = @"SELECT * FROM DEPARTMENTS";
+            string query = @"SELECT DepartmentId, DepartmentName FROM DEPARTMENTS";
             DataTable dt = new DataTable();
             using (var sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeAppDB"].ConnectionString)) 
             using(var cmd = new SqlCommand(query, sqlCon))
